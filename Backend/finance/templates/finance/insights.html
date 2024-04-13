@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Insights{% endblock %}
+
+{% block content %}
+    <h1 class="my-4 text-center">Insights</h1>
+    <hr>
+    <h4>Spending per Category</h2>
+    <ul>
+        {% for transaction in transactions_per_category %}
+            <li>{{ transaction.category }}: ${{ transaction.total }}</li>
+        {% endfor %}
+    </ul>
+
+    <div class="my-4 text-center"> 
+        <a href="{% url 'input_transaction' %}" class="btn btn-secondary form-control">Add Transaction</a> 
+    </div> 
+{% endblock %}

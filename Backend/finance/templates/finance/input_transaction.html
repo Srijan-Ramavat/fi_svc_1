@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}Enter Transaction{% endblock %}
+
+{% block content %}
+
+<div class="container"> 
+    <h1 class="my-4 text-center">Enter Transaction</h1>
+    <hr>
+    <form method="post"> 
+        {% csrf_token %} 
+        {% for field in form %}
+            <div class="wgt-div">
+                {{ field.errors }}
+                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                <div class="wgt-div-inner">
+                    {{ field.as_widget }}
+                </div>
+            </div>
+        {% endfor %}
+        <div class="my-4 form-group"> 
+            <button type="submit" class="btn btn-primary form-control">Submit</button> 
+        </div> 
+    </form> 
+    <div class="my-4 text-center"> 
+        <a href="{% url 'insights' %}" class="btn btn-secondary form-control">View Insights</a> 
+    </div> 
+</div> 
+{% endblock %}
